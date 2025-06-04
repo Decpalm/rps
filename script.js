@@ -1,5 +1,8 @@
-const hand = ['rock', 'paper', 'scissors']
+const hand = ['rock', 'paper', 'scissors'];
 let humanScore = 0, computerScore = 0;
+const hScore = document.querySelector(".hScore");
+const cScore = document.querySelector(".cScore");
+const result = document.querySelector(".result");
 
 function getComputerChoice(){
     return hand[Math.floor(Math.random()*3)];
@@ -13,41 +16,59 @@ function playRound(humanChoice, computerChoice){
 
 
     if(humanChoice === computerChoice){
-        return "It's a tie!"
+        hScore.textContent = "You: " + humanScore;
+        cScore.textContent = "Comnputer: " + computerScore;
+        result.textContent = "It's a Tie!";
     }
     else if(humanChoice.toLowerCase() === "rock"){
         if(computerChoice === "paper"){
             computerScore++
-            return "You lose! " + computerChoice + " beats " + humanChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You lose! " + computerChoice + " beats " + humanChoice
         }
         else if(computerChoice === "scissors"){
             humanScore++
-            return "You win! " + humanChoice + " beats " + computerChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You win! " + humanChoice + " beats " + computerChoice
         }
     }
     else if(humanChoice.toLowerCase() === "paper"){
         if(computerChoice === "rock"){
             humanScore++
-            return "You win! " + humanChoice + " beats " + computerChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You win! " + humanChoice + " beats " + computerChoice
         }
         else if(computerChoice === "scissors"){
             computerScore++
-            return "You lose! " + computerChoice + " beats " + humanChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You lose! " + computerChoice + " beats " + humanChoice
         }
     }
     else if(humanChoice.toLowerCase() === "scissors"){
         if(computerChoice === "paper"){
             humanScore++
-            return "You win! " + humanChoice + " beats " + computerChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You win! " + humanChoice + " beats " + computerChoice
         }
         else if(computerChoice === "rock"){
             computerScore++
-            return "You lose! " + computerChoice + " beats " + humanChoice
+            hScore.textContent = "You: " + humanScore;
+            cScore.textContent = "Comnputer: " + computerScore;
+            result.textContent =  "You lose! " + computerChoice + " beats " + humanChoice
         }
     }
-    else{
-        return "oops"
-    }   
+    if(humanScore == 5){
+        result.textContent = "You win the Game!!"
+    }
+    else if(computerScore == 5){
+        result.textContent = "You lose the game :("
+    }
+      
 }
 
 /*function playGame(){
