@@ -3,6 +3,14 @@ let humanScore = 0, computerScore = 0;
 const hScore = document.querySelector(".hScore");
 const cScore = document.querySelector(".cScore");
 const result = document.querySelector(".result");
+const reset = document.querySelector(".reset");
+reset.addEventListener("click", () =>{
+    humanScore = 0; computerScore = 0;
+    hScore.textContent = "You: " + humanScore;
+    cScore.textContent = "Comnputer: " + computerScore;
+    result.textContent = "";
+    reset.style.cssText = "display: none;";
+})
 
 function getComputerChoice(){
     return hand[Math.floor(Math.random()*3)];
@@ -14,8 +22,13 @@ function getHumanChoice(){
 
 function playRound(humanChoice, computerChoice){
 
-
-    if(humanChoice === computerChoice){
+    if(humanScore == 5){
+        result.textContent = "You win the Game!!"  
+    }
+    else if(computerScore == 5){
+        result.textContent = "You lose the game :("
+    }
+    else if(humanChoice === computerChoice){
         hScore.textContent = "You: " + humanScore;
         cScore.textContent = "Comnputer: " + computerScore;
         result.textContent = "It's a Tie!";
@@ -63,12 +76,13 @@ function playRound(humanChoice, computerChoice){
         }
     }
     if(humanScore == 5){
-        result.textContent = "You win the Game!!"
+        result.textContent = "You win the Game!!";
+        reset.style.cssText = "display: block;";  
     }
     else if(computerScore == 5){
-        result.textContent = "You lose the game :("
-    }
-      
+        result.textContent = "You lose the game :(";
+        reset.style.cssText = "display: block;";
+    }    
 }
 
 /*function playGame(){
