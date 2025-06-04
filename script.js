@@ -50,7 +50,7 @@ function playRound(humanChoice, computerChoice){
     }   
 }
 
-function playGame(){
+/*function playGame(){
     
     for(let i = 0; i < 5; i++){
         console.log(playRound(getHumanChoice(), getComputerChoice()))
@@ -77,4 +77,13 @@ function playGame(){
       return output;
     }
 }
-console.log(playGame())
+*/
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+    console.log(playRound(button.getAttribute("class"), getComputerChoice()));
+  });
+});
